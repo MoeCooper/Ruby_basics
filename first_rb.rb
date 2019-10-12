@@ -282,3 +282,42 @@ rescue ZeroDivisionError => e
 rescue TypeError => e #stores error into variable e
   puts e
 end
+
+#******************CLASSES AND OBJECTS************************
+=begin
+class Book
+  attr_accessor :title, :author, :pages #attributes of Book
+end
+
+book1 = Book.new() #creating a new book into book1 vriabel
+book1.title = "Harry Potter"
+book1.author = "JK Rowling"
+book1.pages = 400
+
+book2 = Book.new()
+book2.title = "Random title"
+book2.author = "Random Author"
+book2.pages = 200
+
+
+puts book1.title
+puts book1.author
+puts book1.pages
+puts "\n"
+puts book2.title
+puts book2.author
+puts book2.pages
+=end
+#******************INITIALIZE METHODS (CONSTRUCTORS)************************
+class Book
+  attr_accessor :title, :author, :pages #attributes of Book
+  def initialize(title, author, pages) #similar to constructor
+    @title = title #refers to title attribute of object. Similar to this.title = title. The title that the object is creating is assigned to the title the user makes
+    @author = author
+    @pages = pages
+  end
+end
+
+book1 = Book.new("A title", "an author", 256)#each time Book.new() gets called, initialize method (constructor) gets called
+
+puts book1.title
