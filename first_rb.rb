@@ -321,3 +321,95 @@ end
 book1 = Book.new("A title", "an author", 256)#each time Book.new() gets called, initialize method (constructor) gets called
 
 puts book1.title
+
+#******************OBJECT METHODS************************
+class Student
+  attr_accessor :name, :major, :gpa
+  def initialize(name, major, gpa)
+    @name = name
+    @major = major
+    @gpa = gpa
+  end
+
+  def has_honors #member function (c++)
+    if @gpa >= 3.5
+      return true
+    end
+    return false
+  end
+end
+
+student1 = Student.new("Jim", "CS", 3.8)
+student2 = Student.new("Jane", "Art", 2.9)
+
+puts student1.has_honors()
+puts student2.has_honors
+
+#******************BUILDING A QUIZ************************
+class Question
+  attr_accessor :prompt, :answer
+  def initialize (prompt, answer)
+    @prompt = prompt
+    @answer = answer
+  end
+end
+
+p1 = "What color are apples?\n(a)red\n(b)blue\n(c)purple"
+p2 = "What color are veggies?\n(a)chicken\n(b)green\n(c)holymoly"
+p3 = "What color are trees?\n(a)red\n(b)blue\n(c)brown"
+
+questions = [ #array that stores questions and answers
+  Question.new(p1, "a"),
+  Question.new(p2, "b"),
+  Question.new(p3, "c")
+]
+
+def run_test(questions)
+  answer = ""
+  score = 0
+
+  for question in questions
+    puts question.prompt
+    answer = gets.chomp()
+    if answer == question.answer
+      score += 1
+    end
+  end
+  puts ("You got " + score.to_s + " out of " + questions.length().to_s + ". Congratulations!")
+end
+
+puts run_test(questions)
+
+#******************INHERITANCE************************
+class Chef
+  def make_chicken
+    puts "The chef makes chicken"
+  end
+  def make_salad
+    puts "The chef makes salad"
+  end
+  def make_special_dish
+    puts "The chef makes bbq ribs"
+  end
+end
+
+class ItalianChef < Chef #italian chef inherits from base Chef
+  def make_special_dish
+    puts "THe cheff makes egplant pie"
+  end
+  def make_pasta
+    puts "the chef makes pasta"
+  end
+end
+
+chef = Chef.new()
+chef.make_special_dish
+
+italian_chef = ItalianChef.new()
+italian_chef.make_special_dish
+
+#******************MODULES************************
+require_relative "tools.rb" #we are using something in this file
+include Tools
+
+Tools.sayhi("mike")
