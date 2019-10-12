@@ -1,0 +1,10 @@
+jim, sales
+andy, sales
+kelly, customer service
+creed, quality assurance
+michael, manager
+
+Frankline, Accounting
+Frankline, Accounting
+Frankline, Accounting
+Frankline, Accounting
